@@ -11,14 +11,14 @@ export class AuthenticateDeliverymanUserCase {
   async execute({ username, password }: IAuthenticateDeliveryman) {
     const SECRET_KEY = process.env.SECRET_KEY as string;
 
-    const deliveryman = await prismaClient.clients.findFirst({
+    const deliveryman = await prismaClient.deliveryMan.findFirst({
       where: {
         username,
       },
     });
 
     if (!deliveryman) {
-      throw new Error(`Client ${username} or password invalid!`);
+      throw new Error(`Deliveryman ${username} or password invalid!`);
     }
 
     const passwordMatch = await compare(password, deliveryman.password);
