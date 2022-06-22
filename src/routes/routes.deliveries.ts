@@ -2,6 +2,7 @@ import { Router } from 'express';
 import { CreateDeliveryController } from '../modules/deliveries/useCases/createDelivery/CreateDeliveryController';
 import { FindAllAvailableController } from '../modules/deliveries/useCases/findAllAvailable/FindAllAvailableController';
 import { ensureAuthenticateClient } from '../middlewares/ensureAuthenticateClient';
+import { ensureAuthenticateDeliveryman } from '../middlewares/ensureAuthenticateDeliveryman';
 
 const routesDeliveries = Router();
 
@@ -14,6 +15,10 @@ routesDeliveries.post(
   createDeliveryController.handle,
 );
 
-routesDeliveries.get('/available', findAllAvailableController.handle);
+routesDeliveries.get(
+  '/available',
+  ensureAuthenticateDeliveryman,
+  findAllAvailableController.handle,
+);
 
 export { routesDeliveries };
