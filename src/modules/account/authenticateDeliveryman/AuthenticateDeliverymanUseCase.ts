@@ -9,7 +9,7 @@ interface IAuthenticateDeliveryman {
 
 export class AuthenticateDeliverymanUserCase {
   async execute({ username, password }: IAuthenticateDeliveryman) {
-    const SECRET_KEY = process.env.SECRET_KEY as string;
+    const SECRET_KEY = process.env.SECRET_KEY_DELIVERYMAN as string;
 
     const deliveryman = await prismaClient.deliveryMan.findFirst({
       where: {

@@ -9,7 +9,7 @@ interface IAuthenticateClient {
 
 export class AuthenticateClientUserCase {
   async execute({ username, password }: IAuthenticateClient) {
-    const SECRET_KEY = process.env.SECRET_KEY as string;
+    const SECRET_KEY = process.env.SECRET_KEY_CLIENT as string;
 
     const client = await prismaClient.clients.findFirst({
       where: {

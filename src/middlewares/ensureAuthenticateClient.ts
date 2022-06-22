@@ -19,7 +19,7 @@ export async function ensureAuthenticateClient(
   }
 
   const [, token] = authHeader.split(' ');
-  const SECRET_KEY = process.env.SECRET_KEY as string;
+  const SECRET_KEY = process.env.SECRET_KEY_CLIENT as string;
 
   try {
     const { sub } = verify(token, SECRET_KEY) as IPayload;
