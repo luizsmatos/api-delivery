@@ -7,6 +7,7 @@ export default (
   response: Response,
   _next: NextFunction,
 ) => {
+  console.log(error);
   if (error instanceof Error) {
     return response.status(400).json({ error: error.message });
   }
