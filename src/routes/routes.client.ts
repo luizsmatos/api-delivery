@@ -1,22 +1,23 @@
 import { Router } from 'express';
 
-import { FindAllDeliveriesController } from './../modules/clients/useCases/findAllDeliveries/FindAllDeliveriesController';
-import { AuthenticateClientController } from '../modules/account/authenticateClient/AuthenticateClientController';
 import { CreateClientController } from '../modules/clients/useCases/createClient/CreateClientController';
+import { AuthenticateClientController } from '../modules/account/authenticateClient/AuthenticateClientController';
 import { ensureAuthenticateClient } from '../middlewares/ensureAuthenticateClient';
+import { FindAllDeliveriesClientController } from './../modules/clients/useCases/findAllDeliveries/FindAllDeliveriesClientController';
 
 const routesClient = Router();
 
 const createClientController = new CreateClientController();
 const authenticateClientController = new AuthenticateClientController();
-const findAllDeliveriesController = new FindAllDeliveriesController();
+const findAllDeliveriesClientController =
+  new FindAllDeliveriesClientController();
 
 routesClient.post('/', createClientController.handle);
 routesClient.post('/authenticate', authenticateClientController.handle);
 routesClient.get(
   '/deliveries',
   ensureAuthenticateClient,
-  findAllDeliveriesController.handle,
+  findAllDeliveriesClientController.handle,
 );
 
 export { routesClient };
