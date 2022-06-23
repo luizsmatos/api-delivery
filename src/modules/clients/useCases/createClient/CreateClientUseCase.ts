@@ -15,6 +15,10 @@ export class CreateClientUseCase {
           mode: 'insensitive',
         },
       },
+      select: {
+        id: true,
+        username: true,
+      },
     });
 
     if (clientExist) {
