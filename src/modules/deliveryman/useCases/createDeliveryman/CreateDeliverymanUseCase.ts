@@ -15,6 +15,10 @@ export class CreateDeliverymanUseCase {
           mode: 'insensitive',
         },
       },
+      select: {
+        id: true,
+        username: true,
+      },
     });
 
     if (deliverymanExist) {
