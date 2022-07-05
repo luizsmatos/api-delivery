@@ -1,7 +1,7 @@
 import { Router } from 'express';
 
 import { CreateClientController } from '../modules/clients/useCases/createClient/CreateClientController';
-import { AuthenticateClientController } from '../modules/account/authenticateClient/AuthenticateClientController';
+import { AuthenticateClientController } from '../modules/account/useCases/authenticateClient/AuthenticateClientController';
 import { ensureAuthenticateClient } from '../middlewares/ensureAuthenticateClient';
 import { FindAllDeliveriesClientController } from './../modules/clients/useCases/findAllDeliveries/FindAllDeliveriesClientController';
 
